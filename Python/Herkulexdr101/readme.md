@@ -1,0 +1,1 @@
+It contain the Herkulex library and an example code for interfacing of Herkulex
