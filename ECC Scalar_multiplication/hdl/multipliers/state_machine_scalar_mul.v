@@ -11,7 +11,7 @@
 // Target Devices: 
 // Tool versions: 
 // Description: 
-//
+//	
 // Dependencies: 
 //
 // Revision: 
@@ -19,6 +19,10 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
+
+/////    top module ///////
+
 
 module state_machine_scalar_mul #(
 		parameter Data=255,
@@ -30,22 +34,23 @@ module state_machine_scalar_mul #(
 		input  wire   [Data:0]  a_data_in,         //Data bus for taking input
 		output wire   [Data:0]  a_data_out,         //Data bus for taking output
 		input  wire             command_scalar_multiplication,
-		input wire              start_operation,
-		output wire             interupt_scalar_mul,
+		input  wire             start_operation,
+		// interupt to inform operation    is completed
+		output wire             interupt_scalar_mul,   
 		output wire             interupt_point_addition,
 		output wire             interupt_point_double
 	 );
 	 
-	 reg [5:0]   address_bus;
-	 reg [1:0]   no_of_chunks;
+	 reg [5:0]    address_bus;
+	 reg [1:0]    no_of_chunks;
 	 reg [Data:0] Data_Polynomial;
-	 reg [9:0]   Data_len_Polynomial;
-	 reg [2:0]   fsm;
-	 reg [3:0]   count;
-	 reg        start,select_operation;
-	 reg [5:0]  start_address;
+	 reg [9:0]    Data_len_Polynomial;
+	 reg [2:0]    fsm;
+	 reg [3:0]    count;
+	 reg          start,select_operation;
+	 reg [5:0]    start_address;
 	 
-	 
+
 	 initial begin
 		start <= 1'h0;
 		count <= 2'h0; 

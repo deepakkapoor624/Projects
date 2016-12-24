@@ -51,13 +51,13 @@ module reduction_256_module#(
     );  
  
     reg [7:0]    frst_chunk,secnd_chunk,B_Mask_Pos,Lut_shift_data;
-	 reg [9:0]    position_shift;
+	  reg [9:0]    position_shift;
     reg [3:0]    Poly_len_Chunk,CHECK;    //check To check previous 64 is been reduced or not
     reg [2:0]    C_byte_Pos,D_byte_Pos,i,shift_check;
     reg [4:0]    byte_position_reduced;
     reg [4:0]    word_pos1,byte_pos1,word_pos2,byte_pos2,var_1,var_3;
     reg [3:0]    byte_pos_Reduction;
-	 reg [2:0]    C_start_addr,D_start_addr;
+	  reg [2:0]    C_start_addr,D_start_addr;
     reg [63:0]   A_Red_Poly1,A_Poly1,last_byte,last_chunk,A_Mask,last_64_chunk;
     reg [2:0]    check,addr_affected_D_1,addr_affected_C_1,addr_affected_D_2,addr_affected_C_2,check_last_byte;
     reg [8:0]    Mod,count;
@@ -65,7 +65,7 @@ module reduction_256_module#(
     wire [63:0]  A_Poly ,A_Red_Poly,Data_byte_C,Data_byte_D,Out_Mask;
     wire [135:0] Data_64_2_Chunk;
     wire [255:0] var_C_left,var_D_left;
-	 wire [127:0] Lut_Out1,Lut_Out2;
+	  wire [127:0] Lut_Out1,Lut_Out2;
     wire [135:0] Lut_Out_shift1,Lut_Out_shift2;	
     wire  [271:0]  Lut_Out_Shift;	 
     
@@ -150,9 +150,9 @@ module reduction_256_module#(
                              
                 byte_position_reduced<=1'h0;  
                 b_adbus_C<=start_addr;
-					 C_start_addr<=start_addr;
-					 D_start_addr<=start_addr;
-					 C_byte_Pos<=1'h1;
+					      C_start_addr<=start_addr;
+					      D_start_addr<=start_addr;
+					      C_byte_Pos<=1'h1;
                 addr_affected_C_1<=start_addr;
                 addr_affected_D_1<=start_addr;
                 addr_affected_C_2<=start_addr;
@@ -1729,6 +1729,7 @@ module reduction_256_module#(
 				  else
 				  b_data_in_D<={192'h0,last_64_chunk};
 				  end
+
            8'hc1:begin
 			     Mod<=8'hc2;
 				  

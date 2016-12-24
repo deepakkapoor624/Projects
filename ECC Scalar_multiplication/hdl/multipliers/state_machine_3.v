@@ -81,7 +81,7 @@ module state_machine_point_add#(
 		 Ram_data_transfer Ram_transfer (
 				.clk(clk), 
 				
-			   .w_RAM(w_RAM_inner_PORT), 
+			    .w_RAM(w_RAM_inner_PORT), 
 				.adbus_RAM(adbus_RAM_inner_PORT), 				        //port for  Ram in this layer
 				.data_in_RAM(data_in_RAM_inner_PORT), 
 				.data_out_RAM(data_out_RAM_inner_PORT),

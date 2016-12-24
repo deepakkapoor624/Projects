@@ -18,6 +18,11 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
+
+
+
+//////////  This module is used to transfer data to and fro from scalar Mul Ram to Ram of Point add and double upon receiving command from scalar 
+/////////   multiplication module
 module Ram_transfer_scalar_mul#(
 parameter Data=255)(
 
@@ -43,7 +48,6 @@ parameter Data=255)(
 		output reg       interupt_transfer,              //generate interupt on completion
 		output reg       transfer_running
 	                    //????????????????
-
     );
      
 	reg [3:0] fsm;
@@ -88,11 +92,11 @@ parameter Data=255)(
 				   fsm <= 4'h4;
 					end
 				 else begin
-               fsm<=4'h7;
+                    fsm<=4'h7;
 					interupt_transfer<=1'h1;
 					end	
-         if (read_write_command) begin       //WRITE
-			      b_w<=1'h1;
+            if (read_write_command) begin       //WRITE
+			        b_w<=1'h1;
 					b_data_in<=a_data_out;
 					b_adbus<=write_address;
 					end
@@ -100,7 +104,7 @@ parameter Data=255)(
 				else begin
 					a_w<=1'h1;
 					a_data_in<=b_data_out;	
-			      a_adbus<=write_address;
+			        a_adbus<=write_address;
 					end
 		end			
 					

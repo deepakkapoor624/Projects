@@ -895,7 +895,9 @@ class Scalar_mul(object):
         return A
      
     
-    def Curve_Calculation(self,Polynomial):    
+    def Curve_Calculation(self,Polynomial):
+
+        ##### breaking of curve to give only useful information   #######    
         Curve_Polynomial=np.array([],dtype='uint8')    
         Polynomial=self.str2nparray(Polynomial)
         Curve_len=(len(Polynomial)-1)*32+gmpy2.bit_length(int(Polynomial[-1]))-1
@@ -919,6 +921,7 @@ class Scalar_mul(object):
     @cocotb.coroutine
     def Ram_write(self,dut, A, B):
 
+######  Writing value from RAM 
         Ad = BinaryValue()
         Ad.assign(A)
         Bd = BinaryValue()
@@ -936,11 +939,13 @@ class Scalar_mul(object):
     @cocotb.coroutine
     def Ram_Read(self,dut, A):
 
+
+#############  Reading value from RAM
         Ad = BinaryValue()
         Ad.assign(A)
 
         #print Ad, Bd
-        dut.a_adbus.value = Ad
+        dut.a_adbus.value = Ad          
         yield RisingEdge(self.dut.clk)
         yield ReadOnly()
         raise ReturnValue(dut.a_data_out.value)
@@ -948,6 +953,7 @@ class Scalar_mul(object):
 
     @cocotb.coroutine
     def wait(self,dut):
+        ############## wait for 1 cycle 
         yield RisingEdge(self.dut.clk)
         yield RisingEdge(self.dut.clk)
         yield ReadOnly()
@@ -1001,6 +1007,8 @@ def test_ks(dut):
     '''
     
     ###233 bit_curve
+
+    #####    X , Y base co-cordinate ####### Polynomial is the curve , Provate Key randomly generayed
     Polynomial1 = '20000000000000000000000000000000000000004000000000000000001'
     a='0'
     X='17232ba853a7e731af129f22ff4149563a419c26bf50a4c9d6eefad6126'
@@ -1024,12 +1032,14 @@ def test_ks(dut):
 
     D = np.array([0x21,0x27],dtype='uint8')
   
+
+  #### parallelization   fork
     cocotb.fork(Clock(dut.clk, 10).start())
-    #n = input('ENTER THE NUMBER OF BITS')
+    #n = input('ENTE    R THE NUMBER OF BITS')
     
     
     print "Time in",str(datetime.now())
-    yield tb.wait(dut)
+    yield tb.wait(dut)     ##### wait for 1 cycle
     for i,j in zip(A,B):
         C = yield tb.Ram_write(dut, i.tostring()[::-1], j.tostring())
 
@@ -1038,9 +1048,14 @@ def test_ks(dut):
     yield tb.wait(dut)
     yield tb.wait(dut)
     yield tb.wait(dut)
+
+
+    ##### trigger to start operation   scalar mul operation
     yield tb.trigger(dut)
 
-    yield tb.interupt(dut)
+
+##########   wait till the operation is completd it get the interrupt
+    yield tb.interupt(dut)        
     
     Result=np.array([],dtype='uint32')
     count=0
@@ -1055,6 +1070,7 @@ def test_ks(dut):
     print "Time Out",str(datetime.now())
         #count+=count
     
+   ######### get the key at and of process from the python 
     
     field=Binfield(Polynomial1)
     D=field.public_key_gen(X,Y,a,int(P,16))

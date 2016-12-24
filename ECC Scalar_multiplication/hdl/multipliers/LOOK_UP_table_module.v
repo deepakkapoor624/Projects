@@ -37,7 +37,7 @@ parameter IS_ZERO_POS=3'b011
 	wire [3:0] byte_pos_1,byte_pos_2;
 	
 	wire [7:0] C_Out1_1,C_Out1_2,C_Out1_3,C_Out1_4,C_Out1_5,C_Out1_6,C_Out1_7;
-   wire [7:0] C_Out2_1,C_Out2_2,C_Out2_3,C_Out2_4,C_Out2_5,C_Out2_6,C_Out2_7;
+    wire [7:0] C_Out2_1,C_Out2_2,C_Out2_3,C_Out2_4,C_Out2_5,C_Out2_6,C_Out2_7;
 
 	wire [127:0] Lut_Out, Lut_Out_2;	
    
@@ -60,8 +60,8 @@ parameter IS_ZERO_POS=3'b011
 	assign A_1=A_Poly[19:12];
 	assign byte_pos_1=A_Poly[23:20];
 	
-	assign A_2=A_Poly[7:0];
-	assign byte_pos_2=A_Poly[11:8];
+	assign A_2=A_Poly[7:0];      // 8 byte to be reduced
+	assign byte_pos_2=A_Poly[11:8];    // 8 byte to be reduced its position
 
 	LUT look_up_table1 (
 		.A(A_1), 

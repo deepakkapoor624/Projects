@@ -37,14 +37,14 @@ module dma_module_code#(
 	
 	input  wire               b_w_A,  
 	input  wire [(ADDR-1):0]  b_adbus_A,
-   input  wire [1:0]         byte_pos_A,	
+    input  wire [1:0]         byte_pos_A,	
 	output wire [(DATA-1):0]  b_data_out_A,
 	input  wire [(DATA-1):0]  b_data_in_A,
  	
 	input  wire                  b_w_B,  
 	input  wire [(ADDR-1):0]     b_adbus_B,
-   input  wire [1:0]            byte_pos_B,
-   input  wire [(DATA-1):0]     b_data_in_B,	
+    input  wire [1:0]            byte_pos_B,
+    input  wire [(DATA-1):0]     b_data_in_B,	
 	output wire 	[(DATA-1):0]  b_data_out_B,
 	
 	
@@ -52,7 +52,7 @@ module dma_module_code#(
 	input  wire [(ADDR-1):0]     b_adbus_C,
 	input  wire [1:0]            byte_pos_C,
 	output wire [(DATA-1):0]     b_data_out_C,
-   input  wire [(DATA-1):0]     b_data_in_C,	
+    input  wire [(DATA-1):0]     b_data_in_C,	
 		
 	input  wire                  b_w_D,  
 	input  wire [(ADDR-1):0]     b_adbus_D,
@@ -111,7 +111,7 @@ module dma_module_code#(
 			.b_adbus_C(b_adbus_C), 
 			.b_data_in_C(b_data_in_C1), 
 			.b_data_out_C(b_data_out_C),
-         .b_w_D(b_w_D), 
+            .b_w_D(b_w_D), 
 			.b_adbus_D(b_adbus_D), 
 			.b_data_in_D(b_data_in_D1), 
 			.b_data_out_D(b_data_out_D),

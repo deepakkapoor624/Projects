@@ -29,7 +29,7 @@ module point_addition_module(
 	input wire			 interupt_inv, 
 	input wire			 interupt_mul,
 	input wire   		 interupt_Xor,
-	input wire         interupt_transfer,
+	input wire          interupt_transfer,
 	
 	output reg [2:0]   	start_addr,
 	output reg  [3:0]  	command_ECC,            //command for 	ECC primitive operation
@@ -40,7 +40,7 @@ module point_addition_module(
 	 output reg       		read_write_command,          //enable to transfer data to inner Ram
 	 output reg [5:0] 		read_address,
 	 output reg [5:0] 		write_address,
-    output reg 			   command_transfer,	
+    output reg 			    command_transfer,	
 	 input wire [9:0]       Data_len_Polynomial,
 	 input wire [1:0] 	   command          //cmd to perform point doubling
     );

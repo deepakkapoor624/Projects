@@ -44,18 +44,18 @@ module multiplication_recursive_module(
     
      output reg         b_w_C,
      output reg         b_w_D,
-	  output reg         interupt,
-	  input wire [9:0]   Data_len_Polynomial
+	 output reg         interupt,
+	 input wire [9:0]   Data_len_Polynomial
  
  );
         reg [2:0] write_addr;
         reg [7:0]Mul;
-		  reg [2:0] Poly_len,Poly_chunk;
+		reg [2:0] Poly_len,Poly_chunk;
         reg [255:0] x00,x01,x02,x10,x12,x20,x22,D00,D01,D10,D11,D20,D21,A11,Out0;
         reg [255:0] y00,y02;
         reg [255:0] A00,B00;
         reg [255:0]  A20,B20,A21,B21,O21,O20,O23,O24;
-         reg [511:0] Out_1,Out_2,Out_3,Out_4;
+        reg [511:0] Out_1,Out_2,Out_3,Out_4;
         reg [255:0] Xor_A1,Xor_B1,A01,B01,A02,B02,D02,B11,D12;
         wire [255:0] Xor_A,Xor_B,Xor_out;
  
@@ -98,7 +98,7 @@ module multiplication_recursive_module(
 					  end
 					  
         8'h3:begin    //a0b0   96 BIT
-					 Mul<=8'h4;
+				Mul<=8'h4;
                 Mul_A<=b_data_out_A[127:0];
                 Mul_B<=b_data_out_B[127:0];              //a0b0
                
@@ -125,9 +125,9 @@ module multiplication_recursive_module(
 
                if(Poly_len	==3'h0)begin
                  b_adbus_C<=write_addr;
-					  interupt<=1'h1;
+				 interupt<=1'h1;
                  b_w_C <=1'h1;
-					  b_data_in_C<={Mul_out_msb[127:0],Mul_out_lsb};
+			     b_data_in_C<={Mul_out_msb[127:0],Mul_out_lsb};
 					  Mul<=8'h42;
 					  end
 					  else begin

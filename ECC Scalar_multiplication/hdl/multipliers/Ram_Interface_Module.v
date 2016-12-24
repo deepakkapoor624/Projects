@@ -23,13 +23,13 @@ parameter DATA = 256,
 parameter ADDR = 3
 )(
 	input clk,
-	input a_w,                               
+	input a_w, 
+
 	input			[5:0] a_adbus,
 	input  wire [(DATA-1):0] a_data_in, 
 	output wire 	[(DATA-1):0] a_data_out,  
 	
 	input        b_w_A,  
-	
 	/*For simultaneous Read address Port must be differnt */
 	input wire  [(ADDR-1):0] b_adbus_A,
 	input  wire	[(DATA-1):0] b_data_in_A,	

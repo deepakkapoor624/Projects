@@ -21,6 +21,7 @@
 module Ram_Module_1#(
    parameter DATA = 256,
 	parameter ADDR = 6)(                               
+	
 	input clk,
 	input a_w,
 	input b_w,                               
@@ -42,15 +43,14 @@ module Ram_Module_1#(
 				memory[a_adbus] <= a_data_in;
 			end
 				a_data_out<=memory[a_adbus];	
-end
+    end
 
-    	always @(posedge clk) begin
-		if( b_w ) begin
+    always @(posedge clk) begin
+		if(b_w) begin
 				memory[b_adbus] <= b_data_in;
-			end
+			    end
 				b_data_out<=memory[b_adbus];	
 
 	end//end of always module
-
 
 endmodule
